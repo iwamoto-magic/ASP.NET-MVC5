@@ -1,0 +1,51 @@
+﻿ルート
+/App_Start/RouteConfig.cs
+
+App_Start 
+アプリケーションが起動するタイミングで呼び出されるStaticメソッドを集めた初期化フォルダー
+このクラスを呼び出しているのは、Global.asaxのApplication_Start()ハンドラー
+
+Modle　　本質はView-Controller
+ASP.NETのMVCではモデルに相当する機能は含まれない。
+.NET Framework標準の
+ADO.NET Entity FrameWork(Entity FrameWork)　← 本書ではこれ
+LINQ
+ADO.NET
+などの知識をそのまま利用できる。
+
+
+ADO.NET Entity FrameWork(Entity FrameWork)
+	O/Rマッピング
+		オブジェクトのプロパティとRDBMSの各列をマッピングする技術の事。
+	
+	開発の流れ
+	1.データモデル(エンティティ)の定義
+		Member.cs // POCOオブジェクト　データモデルを作成
+		MvcBasicContext.cs  //コンテキストクラス DB接続する橋渡しをするのがこれ。データの取得や保存はコレが行う
+		DB接続文字列を定義 Web.config 以下を追加
+			<add 
+				name="DefaultConnection" 
+				connectionString="Data Source=(LocalDb)\v11.0;AttachDbFilename=|DataDirectory|\aspnet-MvcBasic-20140509025534.mdf;Initial Catalog=aspnet-MvcBasic-20140509025534;Integrated Security=True" 
+				providerName="System.Data.SqlClient" 
+			/>
+		 ↓説明↓
+			<add 
+				name=接続名 コンテキストクラスの名前
+				connectionString=接続文字列
+				providerName=接続に使用するプロバイダー名
+			/>
+		イニシャライザーを準備　MvcBasicInitializer.cs
+			データベースを生成するタイミングを指定
+				CreateDatabaseIfNotExists<MvcBasicContext> // アプリケーションが存在しない場合
+				DropCreateDatabaseAlways<MvcBasicContext> // アプリケーション実行時常に
+				DropCreateDatabaseIfChanges<MvcBasicContext> // モデルが変更された
+		イニシャライザーができたら、Global.asax.csのApplication_Start()イベントに登録
+				Database.SetInitializer<MvcBasicContext>(new MvcBasicInitializer());
+		モデルの部分のコードが出来たら、いったん「ビルド」-「ソリューションのビルド」からビルドする。
+
+
+	2.コンテキストの定義
+	
+	3.イニシャライザーの定義
+	4.コントローラ/ビューの作成
+	5.サンプルの実行
