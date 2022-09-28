@@ -44,7 +44,6 @@ ADO.NET Entity FrameWork(Entity FrameWork)
 		イニシャライザーができたら、Global.asax.csのApplication_Start()イベントに登録
 				Database.SetInitializer<MvcBasicContext>(new MvcBasicInitializer());
 		モデルの部分のコードが出来たら、いったん「ビルド」-「ソリューションのビルド」からビルドする。
-
 	4.コントローラ/ビューの作成
 	5.サンプルの実行
 
@@ -54,3 +53,6 @@ ADO.NET Entity FrameWork(Entity FrameWork)
 
 配布サンプル
 https://www.wings.msn.to/index.php/-/A-03/978-4-7980-4179-7
+
+view
+	Razor 構文 を使っている

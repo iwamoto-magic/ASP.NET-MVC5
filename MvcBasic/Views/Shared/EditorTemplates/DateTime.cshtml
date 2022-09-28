@@ -1,0 +1,5 @@
+﻿@* ?の部分はnull許容型になっている *@
+@model System.DateTime?
+
+@Html.TextBoxFor(model => model, new { @class = "form-control cal" })
+

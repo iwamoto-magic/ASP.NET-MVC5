@@ -1,9 +1,6 @@
 using MvcBasic.Models;
-using System;
-using System.Collections.Generic;
+using MvcView.Models;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -21,6 +18,9 @@ namespace MvcBasic
 
             // イニシャライザーを登録
             Database.SetInitializer<MvcBasicContext>(new MvcBasicInitializer());
+
+            // イニシャライザーを登録
+            Database.SetInitializer<MvcViewContext>(new MvcViewInitializer());
         }
     }
 }
