@@ -21,6 +21,7 @@ ADO.NET Entity FrameWork(Entity FrameWork)
 	開発の流れ
 	1.データモデル(エンティティ)の定義
 		Member.cs // POCOオブジェクト　データモデルを作成
+	2.コンテキストの定義
 		MvcBasicContext.cs  //コンテキストクラス DB接続する橋渡しをするのがこれ。データの取得や保存はコレが行う
 		DB接続文字列を定義 Web.config 以下を追加
 			<add 
@@ -34,6 +35,7 @@ ADO.NET Entity FrameWork(Entity FrameWork)
 				connectionString=接続文字列
 				providerName=接続に使用するプロバイダー名
 			/>
+	3.イニシャライザーの定義
 		イニシャライザーを準備　MvcBasicInitializer.cs
 			データベースを生成するタイミングを指定
 				CreateDatabaseIfNotExists<MvcBasicContext> // アプリケーションが存在しない場合
@@ -43,9 +45,12 @@ ADO.NET Entity FrameWork(Entity FrameWork)
 				Database.SetInitializer<MvcBasicContext>(new MvcBasicInitializer());
 		モデルの部分のコードが出来たら、いったん「ビルド」-「ソリューションのビルド」からビルドする。
 
-
-	2.コンテキストの定義
-	
-	3.イニシャライザーの定義
 	4.コントローラ/ビューの作成
 	5.サンプルの実行
+
+/{controller}/{action}/{id}
+リクエストデータ(ポストデータ、クエリー情報)
+	このような入力値受け取りのしくみのことを モデルバインドという。
+
+配布サンプル
+https://www.wings.msn.to/index.php/-/A-03/978-4-7980-4179-7

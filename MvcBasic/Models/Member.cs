@@ -10,6 +10,7 @@ namespace MvcBasic.Models
     {
         public int Id { get; set; }
 
+        //[DisplayName("氏名")] で Name ではなく 氏名 で表示できるようにできる。 
         [DisplayName("氏名")]
         public string Name { get; set; }
 
